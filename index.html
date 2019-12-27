@@ -4,16 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
     <title>Dinner and a Movie</title>
 </head>
-<body>
+<body class="grey lighten-5">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./script.js"></script>
+    <nav>
+        <div class="nav-wrapper indigo lighten-1">
+            <a href="#" class="brand-logo center">Dinner and a Movie</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="instructions">Search for your restauraunt below. <br> Once you have chosen your restaurant you'll get a list of movies to compliment your meal!</div>
+        <div class="divider"></div>
+        <div class="row">
+            <input type="text" id="autocomplete-input user-input" class="autocomplete col s12 l9">
+            <label for="autocomplete-input"></label>
+            <a id="searchBtn" class="col push-s4 push-m5 push-l1 waves-effect waves-light btn-small indigo lighten-1">Search</a>
+        </div>
+        <div class="row">
+            <div class="col s12 m5 indigo lighten-3 out-put" id="restaurantInfo">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos sit qui reiciendis sunt maiores dolor quos voluptatum facere consequatur voluptates dolore culpa mollitia officia dolorem, necessitatibus, possimus quaerat nihil doloremque.</div>
+            <div class ="col s12 m5 push-m2 indigo lighten-3 out-put" id="movie-options">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus illo inventore quis! Nemo odit aut numquam! Natus ut fuga odio, quod aliquid quas, voluptatem ea voluptatum, numquam quo tempora praesentium?</div>
+        </div>
+    </div>
+   
     
-    <h1>Dinner and a Movie</h1>
-    <textarea name="" id="user-input" cols="100" rows="1"></textarea>
-    <button id="searchBtn">Search</button>
-    <div id="restaurantInfo"></div>
     
 </body>
 </html>

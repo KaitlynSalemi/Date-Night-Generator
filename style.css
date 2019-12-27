@@ -1,0 +1,36 @@
+body {
+    font-family: 'Lora', serif;
+}
+
+.divider {
+    margin: 10px 0;
+}
+
+#instructions {
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+#searchBtn {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 125px;   
+}
+
+.out-put {
+    border-radius: 10px;
+    width: 100px;
+}
+
+@media screen and (max-width: 415px){
+    nav {
+        line-height: normal;
+        height: 75px;
+    }
+    .out-put {
+        margin-bottom: 10px;
+    }
+}
