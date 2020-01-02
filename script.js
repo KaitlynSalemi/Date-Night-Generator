@@ -1,29 +1,36 @@
 var searchBtn = $("#searchBtn");
-var userInput = $("#user-input");
-var restaurantInfo = $("restaurantInfo")
-var restaurants = [];
+var userInput = $("#autocomplete-input");
 
-function displayRestaurantInfo(){
-    var restaurant = $(this).attr("data-name");
-    var queryURL = "http://opentable.herokuapp.com/api/restaurants?=" + restaurant
+$(document).ready(function() {
+    var restaurantInfo = $("restaurantInfo")
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(response) {
-        console.log(response)
+    function displayRestaurantInfo(){
+        var restaurant = $(userInput).val();
+        console.log(restaurant);
+        var queryURL = "http://opentable.herokuapp.com/api/restaurants?name=" + restaurant
 
-        var restaurantDiv = $("<div class='restaurant'>");
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+            console.log(response)
 
-        restaurantInfo.append(restaurantDiv);
+            var restaurantDiv = $("<div class='restaurant'>");
+
+            restaurantInfo.append(restaurantDiv);
+        });
+    };
+
+    // displayRestaurantInfo();
+
+    $("#searchBtn").on("click", function(event) {
+        event.preventDefault();
+        
+        userInput.val().trim();
+        
+        displayRestaurantInfo();
+
     });
-};
 
-// $(searchBtn).on("click", function(event) {
-//     event.preventDefault();
-//     var restaurant = $("#user-input").val().trim();
-//     restaurant.attr("data-name")
-//     restaurants.push(restaurant);
-    
-//     displayRestaurantInfo();
-// });
+
+})
