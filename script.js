@@ -4,6 +4,12 @@ $(document).ready(function() {
     var restaurantInfo = $("#restaurant-info");
     var movieInfo = $("#movie-info");
     var movie = {};
+    function movieGenre(){
+      var comedy = ["We're The Millers", "SuperBad", "Life Of Brain", "Animal House", "Hot Fuzz"];
+      var adventure = ["Avengers: Endgame", "Jurassic Park", "Casino Royale", "Mission Impossible: Fallout", "John Wick"];
+      var biography = ["Hacksaw Ridge", "First Man", "The Social Network", "Bohemian Rhapsody", "Sully"];
+      var romance = ["The Notebook", "Titanic", "Forrest Gump", "A Walk To Remember", "Crazy Rich Asians"];
+    }
 
     function displayRestaurantInfo(){
         var restaurant = $(userInput).val();
