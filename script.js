@@ -35,7 +35,7 @@ $(document).ready(function() {
     }
 
     function displayRestaurantInfo(){
-        var restaurant = $(userInput).val();
+        var restaurant = userInput.val();
         console.log(restaurant);
         var queryURL = "http://opentable.herokuapp.com/api/restaurants?name=" + restaurant
 
@@ -61,7 +61,24 @@ $(document).ready(function() {
             method: "GET"
         }).then(function(movieResponse) {
             console.log(movieResponse)
-
+            var title = movieResponse.Title;
+            var pOne = $("<p>").text(title);
+            movieInfo.append(pOne);
+            console.log(movieResponse.Title);
+            var year = movieResponse.Year;
+            var pTwo = $("<p>").text(year);
+            movieInfo.append(pTwo);
+            console.log(movieResponse.Year);
+            var rated = movieResponse.Rated;
+            var pThree = $("<p>").text(rated);
+            movieInfo.append(pThree);
+            console.log(movieResponse.Rated);
+            var plot = movieResponse.Plot;
+            var pFour = $("<p>").text(plot)
+            movieInfo.append(pFour);
+            console.log(movieResponse.Plot);
+            $("#movie-info").empty();
+            $("#movie-info").append(pOne, pTwo, pThree, pFour);
         });
 
     };
@@ -72,32 +89,18 @@ $(document).ready(function() {
         userInput.val().trim();
         
         displayRestaurantInfo();
-       
-    });
+      });
 
-
-});
-
-// function movieGenre(){
-//   var genre = ["Action", "Thriller", "Musical","Crime", "Drama"]
-//   var randomGenre = [];
-
-// function movieButton(){
-//   searchBtn();
-// }
-
-// function randomNumber(){
-//   return Math.floor(Math.random()* randomGenre.length)
-// };
-
-// function searchBtn() {
-//   var text = "";
-//   for (var i = 0; i<4; i++){
-//       text+=randomGenre[randomNumber()]
-//   }
-//   document.getElementById("searchBtn").value = text;
+      userInput.keypress(function(event){
+        
+        
+        if(event.which === 13){
+          displayRestaurantInfo();
+            // $("#searchBtn").click();
+        }
   
-// }
-
-// confirms();
-// 
+  });
+      
+    });
+    
+ 
