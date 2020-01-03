@@ -45,7 +45,7 @@ $(document).ready(function() {
     function displayRestaurantInfo(){
         var restaurant = userInput.val();
         console.log(restaurant);
-        var queryURL = "http://opentable.herokuapp.com/api/restaurants?name=" + restaurant
+        var queryURL = "https://opentable.herokuapp.com/api/restaurants?name=" + restaurant
 
         $.ajax({
             url: queryURL,
