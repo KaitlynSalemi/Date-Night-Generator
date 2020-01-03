@@ -7,6 +7,7 @@ $(document).ready(function() {
     
     
     function movieGenre(price){
+        $('#movie-display').empty();
         console.log(price);
         
       var comedy = ["We're The Millers", "SuperBad", "Life Of Brain", "Animal House", "Hot Fuzz"];
@@ -154,26 +155,56 @@ $(document).ready(function() {
             url: movieURL,
             method: "GET"
         }).then(function(movieResponse) {
-            // console.log(movieResponse)
-            console.log(movieResponse)
-            var title = movieResponse.Title;
-            var pOne = $("<p>").text(title);
-            movieInfo.append(pOne);
-            console.log(movieResponse.Title);
-            var year = movieResponse.Year;
-            var pTwo = $("<p>").text(year);
-            movieInfo.append(pTwo);
-            console.log(movieResponse.Year);
-            var rated = movieResponse.Rated;
-            var pThree = $("<p>").text(rated);
-            movieInfo.append(pThree);
-            console.log(movieResponse.Rated);
-            var plot = movieResponse.Plot;
-            var pFour = $("<p>").text(plot)
-            movieInfo.append(pFour);
-            console.log(movieResponse.Plot);
-            $("#movie-info").empty();
-            $("#movie-info").append(pOne, pTwo, pThree, pFour);
+            console.log(movieResponse);
+            var row = $("<div>").attr('class', "row");
+            var col = $("<div>")
+            var cardDiv = $("<div>").attr('class', 'card');
+            var cardImage = $("<div>").attr('class', 'card-image');
+            var img = $("<img>");
+            img.attr('src', movieResponse.Poster);
+            // var span = $("<span>").attr('class', 'card-title');
+            var content = $("<div>").attr('class', 'card-content');
+            var pTitle = $("<p>");
+            var pYear = $("<p>");
+            var pRating = $("<p>");
+            var pPlot = $("<p>");
+
+            // span.text(movieResponse.Title);
+            pTitle.text(movieResponse.Title);
+            pYear.text("Year: " + movieResponse.Year);
+            pRating.text("Rating: " + (movieResponse.Rated));
+            pPlot.text(movieResponse.Plot);
+            
+            movieInfo.append(row);
+            row.append(col);
+            col.append(cardDiv);
+            cardDiv.append(cardImage);
+            cardImage.append(img);
+            // cardImage.append(span);
+            cardDiv.append(content);
+            content.append(pTitle, pYear, pRating, pPlot);
+            cardDiv.attr('id', 'movie-display')
+            
+
+            // // console.log(movieResponse)
+            // var title = movieResponse.Title;
+            // var pOne = $("<p>").text(title);
+            // movieInfo.append(pOne);
+            // // console.log(movieResponse.Title);
+            // var year = movieResponse.Year;
+            // var pTwo = $("<p>").text(year);
+            // movieInfo.append(pTwo);
+            // // console.log(movieResponse.Year);
+            // var rated = movieResponse.Rated;
+            // var pThree = $("<p>").text(rated);
+            // movieInfo.append(pThree);
+            // // console.log(movieResponse.Rated);
+            // var plot = movieResponse.Plot;
+            // var pFour = $("<p>").text(plot)
+            // movieInfo.append(pFour);
+            // // console.log(movieResponse.Plot);
+            
+            // $("#movie-info").append(pOne, pTwo, pThree, pFour);
         });
 
     };
