@@ -5,33 +5,40 @@ $(document).ready(function() {
     var movieInfo = $("#movie-info");
     var movie = "";
     
+    
     function movieGenre(price){
+        console.log(price);
+        
       var comedy = ["We're The Millers", "SuperBad", "Life Of Brain", "Animal House", "Hot Fuzz"];
       var adventure = ["Avengers: Endgame", "Jurassic Park", "Casino Royale", "Mission Impossible: Fallout", "John Wick"];
       var biography = ["Hacksaw Ridge", "First Man", "The Social Network", "Bohemian Rhapsody", "Sully"];
       var romance = ["The Notebook", "Titanic", "Forrest Gump", "A Walk To Remember", "Crazy Rich Asians"];
 
-      if (price === 4){
+      if (price == 4){
         var randomNumber = Math.floor(Math.random()* romance.length)
         movie = romance[randomNumber]
+        console.log(movie);
+        
         displayMovieInfo();
         
       }
-      else if (price === 3){
+      else if (price == 3){
         var randomNumber = Math.floor(Math.random()* biography.length)
         movie = biography[randomNumber]
+        console.log(movie);
         displayMovieInfo();
       }
-      else if (price === 2){
+      else if (price == 2){
         var randomNumber = Math.floor(Math.random()* adventure.length)
         movie = adventure[randomNumber]
         displayMovieInfo();
       }
-      else if (price === 1){
+      else if (price == 1){
         var randomNumber = Math.floor(Math.random()* comedy.length)
         movie = comedy[randomNumber]
         displayMovieInfo();
       }
+      
     }
 
     function displayRestaurantInfo(){
@@ -46,17 +53,6 @@ $(document).ready(function() {
 
             // console.log(response);
             for (var i = 0; i < response.restaurants.length; i++) {
-                // console.log(response.restaurants[i]);
-                // console.log(response.restaurants[i].name)
-                // console.log(response.restaurants[i].address)
-                // console.log(response.restaurants[i].city)
-                // console.log(response.restaurants[i].state)
-                // console.log(response.restaurants[i].postal_code)
-                // console.log(response.restaurants[i].phone)
-                // console.log(response.restaurants[i].price)
-                // console.log(response.restaurants[i].reserve_url)
-                // console.log(response.restaurants[i].image_url)
-
                 // var restaurantName = $("<p>").text(response.restaurants[i].name);
 
                 // restaurantName.attr('class', 'rt')
@@ -98,13 +94,15 @@ $(document).ready(function() {
                 var pPhone = $("<p>");
                 var pPrice = $("<p>");
                 var action = $("<div>").attr('class', 'card-action');
-                var generateMovieBtn = $("<a>");
+                var generateMovieBtn = $("<a>").attr('class', 'generate-movie');
         
                 span.text(response.restaurants[i].name);
                 pAddress.text(response.restaurants[i].address);
                 pCSP.text((response.restaurants[i].city)+ " " + (response.restaurants[i].state) + " " +(response.restaurants[i].postal_code));
                 pPhone.text("Phone #: " + (response.restaurants[i].phone));
                 pPrice.text("Price: " + (response.restaurants[i].price));
+                pPrice.attr("data-price",response.restaurants[i].price);
+                pPrice.attr("class", "price");
                 generateMovieBtn.text("Generate Movie");
         
         
@@ -126,9 +124,6 @@ $(document).ready(function() {
             
         });
 
-
-
-
         // <div class ="row">
         //     <div class="col s12 m7">
         //         <div class="card">
@@ -146,22 +141,10 @@ $(document).ready(function() {
         //         </div>
         //     </div>
         // </div>
-    
+        
     };
 
    
-       
-
-
-
-            console.log(response)
-            for (var i = 0; i<response.restaurants.length;i++){
-              movieGenre(response.restaurants[i].price);
-
-            }
-          });
-        };
-        
     function displayMovieInfo(){
       console.log(movie);
       
@@ -195,38 +178,33 @@ $(document).ready(function() {
 
     };
     
+    $(document).on("click", ".generate-movie",function(event) {
+        event.preventDefault();
+    
+        console.log($(this).parent().parent().find("div.card-content").find("p.price").attr("data-price"));
+
+        var price = $(this).parent().parent().find("div.card-content").find("p.price").attr("data-price");
+
+        movieGenre(price);
+    });
+
     $("#searchBtn").on("click", function(event) {
         event.preventDefault();
         
         userInput.val().trim();
         
         displayRestaurantInfo();
-
-        displayMovieInfo();
     });
 
+    userInput.keypress(function (event) {
+        if (event.which === 13) {
+            displayRestaurantInfo();
+        }
+    });
 
 });
 
-// function movieGenre(){
-//   var genre = ["Action", "Thriller", "Musical","Crime", "Drama"]
-//   var randomGenre = [];
 
-// function movieButton(){
-//   searchBtn();
-// }
-      });
 
-      userInput.keypress(function(event){
-        
-        
-        if(event.which === 13){
-          displayRestaurantInfo();
-            // $("#searchBtn").click();
-        }
-  
-  });
-      
-    });
-    
+
  
