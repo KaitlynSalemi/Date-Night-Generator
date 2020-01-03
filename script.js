@@ -3,10 +3,39 @@ $(document).ready(function() {
     var userInput = $("#autocomplete-input");
     var restaurantInfo = $("#restaurant-info");
     var movieInfo = $("#movie-info");
-    var movie = {};
+    var movie = "";
+    
+    function movieGenre(price){
+      var comedy = ["We're The Millers", "SuperBad", "Life Of Brain", "Animal House", "Hot Fuzz"];
+      var adventure = ["Avengers: Endgame", "Jurassic Park", "Casino Royale", "Mission Impossible: Fallout", "John Wick"];
+      var biography = ["Hacksaw Ridge", "First Man", "The Social Network", "Bohemian Rhapsody", "Sully"];
+      var romance = ["The Notebook", "Titanic", "Forrest Gump", "A Walk To Remember", "Crazy Rich Asians"];
+
+      if (price === 4){
+        var randomNumber = Math.floor(Math.random()* romance.length)
+        movie = romance[randomNumber]
+        displayMovieInfo();
+        
+      }
+      else if (price === 3){
+        var randomNumber = Math.floor(Math.random()* biography.length)
+        movie = biography[randomNumber]
+        displayMovieInfo();
+      }
+      else if (price === 2){
+        var randomNumber = Math.floor(Math.random()* adventure.length)
+        movie = adventure[randomNumber]
+        displayMovieInfo();
+      }
+      else if (price === 1){
+        var randomNumber = Math.floor(Math.random()* comedy.length)
+        movie = comedy[randomNumber]
+        displayMovieInfo();
+      }
+    }
 
     function displayRestaurantInfo(){
-        var restaurant = $(userInput).val();
+        var restaurant = userInput.val();
         console.log(restaurant);
         var queryURL = "http://opentable.herokuapp.com/api/restaurants?name=" + restaurant
 
@@ -14,6 +43,7 @@ $(document).ready(function() {
             url: queryURL,
             method: "GET"
         }).then(function(response) {
+
             // console.log(response);
             for (var i = 0; i < response.restaurants.length; i++) {
                 // console.log(response.restaurants[i]);
@@ -123,7 +153,18 @@ $(document).ready(function() {
        
 
 
+
+            console.log(response)
+            for (var i = 0; i<response.restaurants.length;i++){
+              movieGenre(response.restaurants[i].price);
+
+            }
+          });
+        };
+        
     function displayMovieInfo(){
+      console.log(movie);
+      
         var movieURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=e379c334";
 
         $.ajax({
@@ -131,7 +172,25 @@ $(document).ready(function() {
             method: "GET"
         }).then(function(movieResponse) {
             // console.log(movieResponse)
-
+            console.log(movieResponse)
+            var title = movieResponse.Title;
+            var pOne = $("<p>").text(title);
+            movieInfo.append(pOne);
+            console.log(movieResponse.Title);
+            var year = movieResponse.Year;
+            var pTwo = $("<p>").text(year);
+            movieInfo.append(pTwo);
+            console.log(movieResponse.Year);
+            var rated = movieResponse.Rated;
+            var pThree = $("<p>").text(rated);
+            movieInfo.append(pThree);
+            console.log(movieResponse.Rated);
+            var plot = movieResponse.Plot;
+            var pFour = $("<p>").text(plot)
+            movieInfo.append(pFour);
+            console.log(movieResponse.Plot);
+            $("#movie-info").empty();
+            $("#movie-info").append(pOne, pTwo, pThree, pFour);
         });
 
     };
@@ -156,19 +215,18 @@ $(document).ready(function() {
 // function movieButton(){
 //   searchBtn();
 // }
+      });
 
-// function randomNumber(){
-//   return Math.floor(Math.random()* randomGenre.length)
-// };
-
-// function searchBtn() {
-//   var text = "";
-//   for (var i = 0; i<4; i++){
-//       text+=randomGenre[randomNumber()]
-//   }
-//   document.getElementById("searchBtn").value = text;
+      userInput.keypress(function(event){
+        
+        
+        if(event.which === 13){
+          displayRestaurantInfo();
+            // $("#searchBtn").click();
+        }
   
-// }
-
-// confirms();
-// 
+  });
+      
+    });
+    
+ 
