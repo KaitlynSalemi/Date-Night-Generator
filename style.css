@@ -20,10 +20,10 @@ body {
     width: 125px;   
 }
 
-.out-put {
+/* .out-put {
     border-radius: 10px;
     width: 100px;
-}
+} */
 
 @media screen and (max-width: 415px){
     nav {
