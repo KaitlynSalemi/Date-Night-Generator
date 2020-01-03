@@ -50,7 +50,7 @@ $(document).ready(function() {
             url: queryURL,
             method: "GET"
         }).then(function(response) {
-
+            $("#restaurant-info").empty();
             // console.log(response);
             for (var i = 0; i < response.restaurants.length; i++) {
                 // var restaurantName = $("<p>").text(response.restaurants[i].name);
@@ -104,6 +104,8 @@ $(document).ready(function() {
                 pPrice.attr("data-price",response.restaurants[i].price);
                 pPrice.attr("class", "price");
                 generateMovieBtn.text("Generate Movie");
+                
+                // $("#restaurant-info").append(restaurant.length);
         
         
                 restaurantInfo.append(row);
@@ -119,6 +121,7 @@ $(document).ready(function() {
                 content.append(pPrice);
                 cardDiv.append(action);
                 action.append(generateMovieBtn);
+                
 
             }
             
@@ -180,6 +183,7 @@ $(document).ready(function() {
     
     $(document).on("click", ".generate-movie",function(event) {
         event.preventDefault();
+        
     
         console.log($(this).parent().parent().find("div.card-content").find("p.price").attr("data-price"));
 
