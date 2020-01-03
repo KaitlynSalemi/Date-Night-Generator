@@ -7,7 +7,7 @@ $(document).ready(function() {
     
     
     function movieGenre(price){
-        $('#movie-display').empty();
+        $('.movie-display').empty();
         console.log(price);
         
       var comedy = ["We're The Millers", "SuperBad", "Life Of Brain", "Animal House", "Hot Fuzz"];
@@ -186,7 +186,7 @@ $(document).ready(function() {
             // cardImage.append(span);
             cardDiv.append(content);
             content.append(pTitle, pYear, pRating, pPlot);
-            cardDiv.attr('id', 'movie-display')
+            row.attr('class', 'movie-display')
             
 
             // // console.log(movieResponse)
