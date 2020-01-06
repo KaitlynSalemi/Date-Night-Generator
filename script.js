@@ -10,11 +10,15 @@ $(document).ready(function() {
         $('.movie-display').empty();
         console.log(price);
         
-      var comedy = ["We're The Millers", "SuperBad", "Life Of Brain", "Animal House", "Hot Fuzz"];
-      var adventure = ["Avengers: Endgame", "Jurassic Park", "Casino Royale", "Mission Impossible: Fallout", "John Wick"];
-      var biography = ["Hacksaw Ridge", "First Man", "The Social Network", "Bohemian Rhapsody", "Sully"];
-      var romance = ["The Notebook", "Titanic", "Forrest Gump", "A Walk To Remember", "Crazy Rich Asians"];
-
+      var comedy = ["We're The Millers", "SuperBad", "Life Of Brain", "Animal House", "Hot Fuzz", "Beetlejuice", "Ferris Bueller's Day Off", "The Hangover", "The Princess Bride", "This Is Where I Leave You"];
+      var adventure = ["Avengers: Endgame", "Jurassic Park", "Casino Royale", "Mission Impossible: Fallout", "John Wick", "Jumanji", "Back To The Future", "Spectre", "The Goonies", "The Incredibles"];
+      var biography = ["Hacksaw Ridge", "First Man", "The Social Network", "Bohemian Rhapsody", "Sully", "October Sky", "Dunkirk", "Rocketman", "The Wolf Of Wall Street", "Catch Me If You Can"];
+      var romance = ["The Notebook", "Titanic", "Forrest Gump", "A Walk To Remember", "Crazy Rich Asians", "Dirty Dancing", "Silver Linings Playbook", "When Harry Met Sally", "Pretty Woman", "Breakfast At Tiffany's"];
+      console.log(comedy);
+      console.log(adventure);
+      console.log(biography);
+      console.log(romance);
+      
       if (price == 4){
         var randomNumber = Math.floor(Math.random()* romance.length)
         movie = romance[randomNumber]
