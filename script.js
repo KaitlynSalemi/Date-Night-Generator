@@ -96,6 +96,7 @@ $(document).ready(function() {
                 var pPrice = $("<p>");
                 var action = $("<div>").attr('class', 'card-action');
                 var generateMovieBtn = $("<a>").attr('class', 'generate-movie');
+                generateMovieBtn.attr('href', movieInfo);
         
                 span.text(response.restaurants[i].name);
                 pAddress.text(response.restaurants[i].address);
@@ -160,8 +161,15 @@ $(document).ready(function() {
         }).then(function(movieResponse) {
             console.log(movieResponse);
             var row = $("<div>").attr('class', "row");
+            // row.attr('href', "#target")
             var col = $("<div>")
             var cardDiv = $("<div>").attr('class', 'card');
+
+            // cardDiv.attr("id", "target");
+
+            // var targetting = $('<a>').attr('name', 'theMovie');
+            // cardDiv.append(targetting)
+
             var cardImage = $("<div>").attr('class', 'card-image');
             var img = $("<img>");
             img.attr('src', movieResponse.Poster);
@@ -211,13 +219,11 @@ $(document).ready(function() {
         });
 
     };
-    
+
     $(document).on("click", ".generate-movie",function(event) {
         event.preventDefault();
-        
-    
-        console.log($(this).parent().parent().find("div.card-content").find("p.price").attr("data-price"));
 
+        // console.log($(this).parent().parent().find("div.card-content").find("p.price").attr("data-price"));
         var price = $(this).parent().parent().find("div.card-content").find("p.price").attr("data-price");
 
         movieGenre(price);
