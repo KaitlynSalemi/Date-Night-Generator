@@ -52,7 +52,7 @@ $(document).ready(function() {
             method: "GET"
         }).then(function(response) {
             $("#restaurant-info").empty();
-            // console.log(response);
+            console.log(response);
             for (var i = 0; i < response.restaurants.length; i++) {
                 // var restaurantName = $("<p>").text(response.restaurants[i].name);
 
@@ -94,6 +94,8 @@ $(document).ready(function() {
                 var pCSP = $("<p>");
                 var pPhone = $("<p>");
                 var pPrice = $("<p>");
+                var reserve = $("<p>");
+                var reserveLink = $("<a>");
                 var action = $("<div>").attr('class', 'card-action');
                 var generateMovieBtn = $("<a>").attr('class', 'generate-movie');
                 generateMovieBtn.attr('href', movieInfo);
@@ -105,6 +107,10 @@ $(document).ready(function() {
                 pPrice.text("Price: " + (response.restaurants[i].price));
                 pPrice.attr("data-price",response.restaurants[i].price);
                 pPrice.attr("class", "price");
+                reserve.text("Reserve link: ")
+                reserveLink.text(response.restaurants[i].reserve_url);
+                reserveLink.attr("href", response.restaurants[i].reserve_url);
+                reserveLink.attr("target", "_blank");
                 generateMovieBtn.text("Generate Movie");
                 
                 // $("#restaurant-info").append(restaurant.length);
@@ -121,6 +127,8 @@ $(document).ready(function() {
                 content.append(pCSP);
                 content.append(pPhone);
                 content.append(pPrice);
+                content.append(reserve);
+                reserve.append(reserveLink);
                 cardDiv.append(action);
                 action.append(generateMovieBtn);
                 
