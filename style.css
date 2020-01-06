@@ -1,5 +1,9 @@
 body {
     font-family: 'Lora', serif;
+    background-image: url(Images/background_2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .divider {
@@ -17,13 +21,22 @@ body {
     margin-bottom: 20px;
     margin-right: auto;
     margin-left: auto;
-    width: 125px;   
+    width: 125px;  
 }
 
-/* .out-put {
-    border-radius: 10px;
-    width: 100px;
-} */
+
+#translucent{
+    background: rgba(253, 253, 253, 0.5);
+    padding: 0px 20px;
+    margin-top: 20px;
+}
+.card-title{
+    color:dimgray;
+    font-size: 50px;
+    font-weight: bolder;
+    -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: dimgray; 
+}
 
 @media screen and (max-width: 415px){
     nav {
