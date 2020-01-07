@@ -125,7 +125,7 @@ $(document).ready(function() {
                 col.append(cardDiv);
                 cardDiv.append(cardImage);
                 cardImage.append(img);
-                cardImage.append(span);
+                content.append(span);
                 cardDiv.append(content);
                 content.append(pAddress);
                 content.append(pCSP);
@@ -187,7 +187,7 @@ $(document).ready(function() {
             img.attr('src', movieResponse.Poster);
             // var span = $("<span>").attr('class', 'card-title');
             var content = $("<div>").attr('class', 'card-content');
-            var pTitle = $("<p>");
+            var pTitle = $("<p>").attr('class', 'movie-title');
             var pYear = $("<p>");
             var pRating = $("<p>");
             var pPlot = $("<p>");

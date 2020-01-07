@@ -6,9 +6,6 @@ body {
     background-attachment: fixed;
 }
 
-.divider {
-    margin: 10px 0;
-}
 
 #instructions {
     padding: 20px;
@@ -24,18 +21,35 @@ body {
     width: 125px;  
 }
 
-
 #translucent{
-    background: rgba(253, 253, 253, 0.5);
+    background: rgba(255, 227, 223, 0.815);
     padding: 0px 20px;
     margin-top: 20px;
 }
 .card-title{
-    color:dimgray;
+    color:#e57373;
     font-size: 50px;
     font-weight: bolder;
-    -webkit-text-stroke-width: 1px; 
-    -webkit-text-stroke-color: dimgray; 
+    /* -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: dimgray;  */
+}
+
+.card{
+    border-color: rgba(255, 255, 255, 0.75);
+    border-style: solid;
+    border-width: 5px;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: #ef5350;
+}
+
+a {
+    color: #e57373;
+}
+
+.movie-title {
+    color: #e57373;
 }
 
 @media screen and (max-width: 415px){

@@ -12,7 +12,7 @@
 <body class="grey lighten-5">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <nav>
-        <div id="thing" class="nav-wrapper indigo lighten-1">
+        <div id="thing" class="nav-wrapper red lighten-3">
             <a href="#" class="brand-logo center">Dinner and a Movie</a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a href=""></a></li>
@@ -23,15 +23,14 @@
     </nav>
     <div class="container">
         <div id="translucent">
-            <div id="instructions">Search for your restauraunt below. <br> Once you have chosen your restaurant you'll get a list of movies to compliment your meal!</div>
-            <div class="divider"></div>
+            <div id="instructions">Search for your restauraunt below. <br> Once you have chosen your restaurant you'll get a movie to compliment your meal!</div>
+            <!-- <div class="divider"></div> -->
             <div class="row">
-                <input type="text" id="autocomplete-input" class="autocomplete col s12 l9">
+                <input type="text" id="autocomplete-input" class="autocomplete col s12 l9 input-field">
                 <label for="autocomplete-input"></label>
-                <a id="searchBtn" class="col push-s4 push-m5 push-l1 waves-effect waves-light btn-small indigo lighten-1">Search</a>
+                <a id="searchBtn" class="col push-s4 push-m5 push-l1 waves-effect waves-light btn-small red lighten-3">Search</a>
             </div>
         </div>
-        
         <div class="row">
             <div class="col s12 m5 out-put" id="restaurant-info"></div>
             <div class ="col s12 m5 push-m2 out-put" id="movie-info"></div>
