@@ -20,9 +20,7 @@ $(document).ready(function() {
       var randomNumber = Math.floor(Math.random()* romance.length)
       movie = romance[randomNumber]
       
-      
       displayMovieInfo();
-      
     }
     else if (price == 3){
       var randomNumber = Math.floor(Math.random()* biography.length)
@@ -85,8 +83,7 @@ $(document).ready(function() {
         pPrice.text("Price: " + (response.restaurants[i].price));
         pPrice.attr("data-price",response.restaurants[i].price);
         pPrice.attr("class", "price");
-        reserve.text("Reserve link: ")
-        reserveLink.text(response.restaurants[i].reserve_url);
+        reserveLink.text("Reserve")
         reserveLink.attr("href", response.restaurants[i].reserve_url);
         reserveLink.attr("target", "_blank");
         generateMovieBtn.text("Generate Movie");
